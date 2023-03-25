@@ -35,10 +35,21 @@ public class BookPage extends BasePage {
     @FindBy(id = "description")
     public WebElement description;
 
+    @FindBy (xpath="//a[normalize-space(text())='Add Book']" )
+    public WebElement addBookBtn;
+
+    @FindBy(xpath = "//button[@type ='submit']")
+    public WebElement saveBtn;
+
 
 
     public WebElement editBook(String book) {
         String xpath = "//td[3][.='" + book + "']/../td/a";
+        return Driver.getDriver().findElement(By.xpath(xpath));
+    }
+
+    public WebElement editBookWithIndex(String book) {
+        String xpath = "(//td[3][.='" + book + "']/../td/a)[1]";
         return Driver.getDriver().findElement(By.xpath(xpath));
     }
 
